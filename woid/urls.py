@@ -1,7 +1,6 @@
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'woid.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+	url(r'^$', 'woid.core.views.home', name='home'),
+	url(r'^icons/$', 'woid.core.views.icons', name='icons'),
 )

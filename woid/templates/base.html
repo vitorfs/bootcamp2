@@ -1,14 +1,64 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>{% block title %}{% endblock title %}</title>
-    </head>
-    <body>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Woid{% endblock title %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/font-awesome.min.css">
+  </head>
+  <body>
+    <header>
+      <div class="wrapper">
+        <a href="" class="settings">
+          <span class="fa fa-bars"></span>
+        </a>
+        <h1>Woid</h1>
+        <ul>
+          <li>
+            <a href="">
+              <span class="fa fa-coffee"></span>
+              Feed
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <span class="fa fa-comments"></span>
+              Q&A
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <span class="fa fa-users"></span>
+              Network
+            </a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main role="main">
+      <div class="left-menu">
+        <div class="profile">
+          <div class="picture">
+            <a href="">
+              <img src="https://avatars1.githubusercontent.com/u/1429529?v=2&s=460">
+            </a>
+          </div>
+          <div class="fullname">
+            <a href="">Vitor Freitas</a>
+          </div>
+          <div class="username">
+            <a href="" class="username">vitorfs</a>
+          </div>
+        </div>
+        <div class="context-menu">
+          {% block contextmenu %}
+          {% endblock contextmenu %}
+        </div>
+      </div>
+      <div class="content">
         {% block main %}
         {% endblock main %}
-
-        {% block footer %}
-        {% endblock footer %}
-    </body>
+      </div>
+    </main>
+  </body>
 </html>
