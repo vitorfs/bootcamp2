@@ -84,15 +84,16 @@ main {
 }
 
 .left-menu {
-  width: 220px;
+  width: 230px;
   float: left;
   position: fixed;
-  padding: 0 10px;
+  padding-right: 10px;
 }
 
 .profile {
   border-bottom: 1px solid #e9e9e9;
-  height: 85px
+  height: 90px;
+  margin-bottom: 10px;
 }
 
 .profile .picture {
@@ -233,7 +234,7 @@ main {
 
 .stream .post h3 img {
   width: 25px;
-  border-radius: 5px;
+  border-radius: 50px;
   float: left;
 }
 
