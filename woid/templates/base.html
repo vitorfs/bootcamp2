@@ -33,8 +33,26 @@
           </li>
           <li>
             <a href="">
+              <span class="fa fa-th"></span>
+              Applications
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <span class="fa fa-graduation-cap"></span>
+              Wiki
+            </a>
+          </li>
+          <li>
+            <a href="">
               <span class="fa fa-users"></span>
               Network
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <span class="fa fa-plus"></span>
+              More
             </a>
           </li>
         </ul>
@@ -58,9 +76,10 @@
         <div class="context-menu">
           <h2>HQSPlus Network</h2>
           <ul>
-            <li><a href="">Inbox</a></li>
-            <li><a href="">Notifications</a></li>
-            <li><a href="">Manage Network</a></li>
+            <li><a href="{% url 'home' %}"><span class="fa fa-home"></span> Home</a></li>
+            <li><a href=""><span class="fa fa-inbox"></span> Inbox</a></li>
+            <li><a href=""><span class="fa fa-bell-o"></span> Notifications</a></li>
+            <li><a href=""><span class="fa fa-cog"></span> Manage Network</a></li>
           </ul>
           {% block context_menu %}
           {% endblock context_menu %}
