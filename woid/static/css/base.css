@@ -1,4 +1,3 @@
-@import url(reset.css);
 @import url(http://fonts.googleapis.com/css?family=Audiowide);
 
 * { 
@@ -52,6 +51,15 @@ header h1 {
   font-family: "Audiowide", cursive;
   margin: 0;
   float: left;
+}
+
+header h1 a {
+  text-decoration: none;
+  color: #555;
+}
+
+header h1 a:hover {
+  color: #000;
 }
 
 header ul {
@@ -218,60 +226,4 @@ main {
   text-align: center;
   font-weight: 600;
   color: #f6f6f6;
-}
-
-.stream li {
-  border-bottom: 1px solid #e9e9e9;
-}
-
-.stream li:last-child {
-  border-bottom: none;
-}
-
-.stream .post {
-  padding: 10px 20px;
-}
-
-.stream .post h3 img {
-  width: 25px;
-  border-radius: 50px;
-  float: left;
-}
-
-.stream .post h3 {
-  height: 25px;
-  font-size: 1.4em;
-  vertical-align: middle;
-}
-
-.stream .post h3 a {
-  text-decoration: none;
-  color: #555;
-  line-height: 25px;
-  margin-left: 10px;
-}
-
-.stream .post h3 small {
-  color: #bbb;
-  font-size: .8em;
-  margin-left: 10px;
-}
-
-.stream .post p {
-  margin: 10px 0;
-}
-
-.stream .post .interaction {
-  
-}
-
-.stream .post .interaction a {
-  text-decoration: none;
-  font-size: 1.2em;
-  margin-right: .7em;
-  color: #555;
-}
-
-.stream .post .interaction a span {
-  margin-right: .1em;
 }

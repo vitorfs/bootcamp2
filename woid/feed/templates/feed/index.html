@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/feed.css">
+{% endblock head %}
+
+
+{% block context_menu %}
+  {% include 'feed/partial/context_menu.html' %}
+{% endblock context_menu %}
+
+
+{% block main %}
+  <div class="content-header">
+    <h2>
+      Feed
+      <button type="button" class="compose">
+        <span class="fa fa-send"></span>
+        Compose
+      </button>
+    </h2>
+  </div>
+  <div class="content-body">
+    {% include 'feed/partial/stream.html' %}
+  </div>
+{% endblock main %}

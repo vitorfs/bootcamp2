@@ -3,8 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>{% block title %}Woid{% endblock title %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/reset.css">
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css">
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/font-awesome.min.css">
+    {% block head %}
+    {% endblock head %}
   </head>
   <body>
     <header>
@@ -12,10 +15,12 @@
         <a href="" class="settings">
           <span class="fa fa-bars"></span>
         </a>
-        <h1>Woid</h1>
+        <h1>
+          <a href="{% url 'home' %}">Woid</a>
+        </h1>
         <ul>
           <li>
-            <a href="">
+            <a href="{% url 'feed' %}">
               <span class="fa fa-coffee"></span>
               Feed
             </a>
@@ -57,8 +62,8 @@
             <li><a href="">Notifications</a></li>
             <li><a href="">Manage Network</a></li>
           </ul>
-          {% block contextmenu %}
-          {% endblock contextmenu %}
+          {% block context_menu %}
+          {% endblock context_menu %}
         </div>
       </div>
       <div class="content">

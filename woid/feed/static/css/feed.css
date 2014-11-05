@@ -1,0 +1,55 @@
+.stream li {
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.stream li:last-child {
+  border-bottom: none;
+}
+
+.stream .feed {
+  padding: 10px 20px;
+}
+
+.stream .feed h3 img {
+  width: 25px;
+  border-radius: 50px;
+  float: left;
+}
+
+.stream .feed h3 {
+  height: 25px;
+  font-size: 1.4em;
+  vertical-align: middle;
+}
+
+.stream .feed h3 a {
+  text-decoration: none;
+  color: #555;
+  line-height: 25px;
+  margin-left: 10px;
+}
+
+.stream .feed h3 small {
+  color: #bbb;
+  font-size: .8em;
+  margin-left: 10px;
+}
+
+.stream .feed p {
+  margin: 10px 0;
+}
+
+.stream .feed .interaction {
+  
+}
+
+.stream .feed .interaction a {
+  text-decoration: none;
+  font-size: 1.2em;
+  margin-right: .7em;
+  color: #555;
+}
+
+.stream .feed .interaction a span {
+  margin-right: .1em;
+}
