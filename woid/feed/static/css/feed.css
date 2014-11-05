@@ -7,7 +7,7 @@
 }
 
 .stream .feed {
-  padding: 10px 20px;
+  padding: 20px 20px;
 }
 
 .stream .feed h3 img {
@@ -27,12 +27,15 @@
   color: #555;
   line-height: 25px;
   margin-left: 10px;
+  float: left;
 }
 
-.stream .feed h3 small {
+.stream .feed h3 span {
   color: #bbb;
   font-size: .8em;
   margin-left: 10px;
+  float: left;
+  line-height: 25px;
 }
 
 .stream .feed p {
@@ -52,4 +55,9 @@
 
 .stream .feed .interaction a span {
   margin-right: .1em;
+}
+
+.stream .feed .feed-settings {
+  float: right;
+  font-size: 1.2em;
 }

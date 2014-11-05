@@ -80,6 +80,10 @@ header ul li a {
   text-decoration: none;
 }
 
+header ul li a span {
+  margin-right: .2em;
+}
+
 header ul li a:hover,
 header ul li a:active {
   color: #555;
