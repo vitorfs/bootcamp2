@@ -131,7 +131,7 @@ def create_user_account(sender, instance, created, **kwargs):
         Account.objects.create(user=instance)
 
 def save_user_account(sender, instance, **kwargs):
-    instance.profile.save()
+    instance.account.save()
 
 post_save.connect(create_user_account, sender=User)
 post_save.connect(save_user_account, sender=User)

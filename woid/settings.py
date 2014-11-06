@@ -86,3 +86,7 @@ TEMPLATE_DIRS = (
 )
 
 NO_PICTURE = ''
+
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/login-redirect/'

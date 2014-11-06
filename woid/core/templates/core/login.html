@@ -1,0 +1,39 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Woid</title>
+</head>
+<body>
+  <h1>Woid</h1>
+  {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+      <ul>
+        <li>{{ error }}</li>
+      </ul>
+    {% endfor %}
+  {% endif %}
+  <h2>{% trans 'Log in' %}</h2>
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <div class="{% if form.username.errors %}has-error{% endif %}">
+      <label for="username">{% trans 'Username' %}</label>
+      <input type="text" id="username" name="username">
+      {% for error in form.username.errors %}
+        <label>{{ error }}</label>
+      {% endfor %}
+    </div>
+    <div class="{% if form.password.errors %}has-error{% endif %}">
+      <label for="password">{% trans 'Password' %}</label>
+      <input type="password" id="password" name="password">
+      {% for error in form.password.errors %}
+        <label>{{ error }}</label>
+      {% endfor %}
+    </div>
+    <div>
+      <button type="submit">{% trans 'Log in' %}</button>
+    </div>
+  </form>
+</body>
+</html>
