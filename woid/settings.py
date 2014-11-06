@@ -25,8 +25,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'woid.activities',
     'woid.core',
     'woid.feed',
+    'woid.questions',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,3 +84,5 @@ MEDIA_URL = '/media/'
 TEMPLATE_DIRS = (
     PROJECT_DIR.child('templates'),
 )
+
+NO_PICTURE = ''
