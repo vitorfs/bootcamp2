@@ -1,10 +1,43 @@
 {% extends 'base.html' %}
 
-{% block main %}
-  <div class="content-header">
-    <h2>Manage Network</h2>
+{% load i18n %}
+
+{% block content %}
+
+  <div class="content">
+    <div class="content-header">
+      <h2>{% trans 'Manage Network' %}</h2>
+    </div>
+    <div class="content-body">
+      <div class="content-inner">
+        <form method="post" action="." role="form">
+          {% csrf_token %}
+
+          {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+          {% endfor %}
+
+          {% for field in form.visible_fields %}
+            <div class="field-wrapper">
+              {{ field.errors }}
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field }}
+            </div>
+          {% endfor %}
+          <div class="field-wrapper">
+            <button type="submit">{% trans 'Save' %}</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-  <div class="content-body">
-    {{ form.as_p }}
+
+  <div class="content">
+    <div class="content-header">
+      <h2>{% trans 'Invites' %}</h2>
+    </div>
+    <div class="content-body">
+    </div>
   </div>
-{% endblock main %}
+
+{% endblock content %}

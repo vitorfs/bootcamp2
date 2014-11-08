@@ -5,3 +5,4 @@ class OrganizationForm(forms.ModelForm):
 
     class Meta:
         model = Organization
+        fields = ['title', 'description', 'url', 'allow_domain']

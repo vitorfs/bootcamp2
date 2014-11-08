@@ -112,7 +112,7 @@ class Account(models.Model):
         try:
             gravatar_url = u'http://www.gravatar.com/avatar/{0}?{1}'.format(
                 hashlib.md5(self.user.email.lower()).hexdigest(),
-                urllib.urlencode({'d':no_picture, 's':'256'}))
+                urllib.urlencode({'d':no_picture, 's':'128'}))
             return gravatar_url
         except Exception, e:
             return no_picture

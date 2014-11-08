@@ -63,7 +63,7 @@
         <div class="profile">
           <div class="picture">
             <a href="">
-              <img src="https://avatars1.githubusercontent.com/u/1429529?v=2&s=460">
+              <img src="{{ user.account.get_picture }}">
             </a>
           </div>
           <div class="fullname">
@@ -85,10 +85,8 @@
           {% endblock context_menu %}
         </div>
       </div>
-      <div class="content">
-        {% block main %}
-        {% endblock main %}
-      </div>
+      {% block content %}
+      {% endblock content %}
     </main>
   </body>
 </html>
