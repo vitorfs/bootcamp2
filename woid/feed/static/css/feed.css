@@ -1,9 +1,30 @@
+.compose {
+  border-bottom: 1px solid #e9e9e9;
+  display: none;
+}
+
+.compose textarea {
+  margin-bottom: 10px;
+}
+
+.compose .post-length {
+  color: #888;
+  font-size: 14px;
+  float: right;
+}
+
 .stream li {
+  border-top: 1px solid #fefefe;
   border-bottom: 1px solid #e9e9e9;
 }
 
 .stream li:last-child {
   border-bottom: none;
+}
+
+.stream li:hover {
+  cursor: pointer;
+  background-color: #f9f9f9;
 }
 
 .stream .feed {
@@ -20,6 +41,7 @@
   height: 25px;
   font-size: 1.4em;
   vertical-align: middle;
+  font-weight: 400;
 }
 
 .stream .feed h3 a {
@@ -42,15 +64,15 @@
   margin: 10px 0;
 }
 
-.stream .feed .interaction {
-  
-}
-
 .stream .feed .interaction a {
   text-decoration: none;
   font-size: 1.2em;
   margin-right: .7em;
   color: #555;
+}
+
+.stream .feed .interaction a:hover {
+  border-bottom: 1px solid;
 }
 
 .stream .feed .interaction a span {

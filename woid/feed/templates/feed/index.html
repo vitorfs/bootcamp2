@@ -1,27 +1,43 @@
 {% extends 'base.html' %}
 
-{% block head %}
-  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/feed.css">
-{% endblock head %}
+{% load i18n %}
 
+{% block stylesheets %}
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/feed.css">
+{% endblock stylesheets %}
+
+{% block scripts %}
+  <script src="{{ STATIC_URL }}js/feed.js"></script>
+{% endblock scripts %}
 
 {% block context_menu %}
   {% include 'feed/partial/context_menu.html' %}
 {% endblock context_menu %}
-
 
 {% block content %}
   <div class="content">
     <div class="content-header">
       <h2>
         Feed
-        <button type="button" class="compose">
+        <button type="button" class="btn-compose">
           <span class="fa fa-send"></span>
-          Compose
+          {% trans 'Compose' %}
         </button>
       </h2>
     </div>
     <div class="content-body">
+      <div class="compose content-inner">
+        <h3>{% trans 'Compose a new post' %}</h3>
+        <form>
+          <textarea rows="3"></textarea>
+          <button type="button" class="btn-post">
+            <span class="fa fa-check"></span>
+            {% trans 'Post' %}
+          </button>
+          <button type="button" class="btn-cancel">{% trans 'Cancel' %}</button>
+          <span class="post-length">255</span>
+        </form>
+      </div>
       {% include 'feed/partial/stream.html' %}
     </div>
   </div>
