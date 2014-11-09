@@ -83,3 +83,20 @@
   float: right;
   font-size: 1.2em;
 }
+
+.stream-update {
+  border-top: 1px solid #fefefe;
+  border-bottom: 1px solid #e9e9e9;
+  background-color: #f9f9f9;
+  display: none;
+}
+
+.stream-update a {
+  color: #888;
+  text-decoration: none;
+  display: block;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 14px;
+  text-align: center;
+}

@@ -28,15 +28,19 @@
     <div class="content-body">
       <div class="compose content-inner">
         <h3>{% trans 'Compose a new post' %}</h3>
-        <form>
+        <form id="compose-form">
+          {% csrf_token %}
           <textarea rows="3"></textarea>
           <button type="button" class="btn-post">
             <span class="fa fa-check"></span>
-            {% trans 'Post' %}
+            <span class="text">{% trans 'Post' %}</span>
           </button>
           <button type="button" class="btn-cancel">{% trans 'Cancel' %}</button>
           <span class="post-length">255</span>
         </form>
+      </div>
+      <div class="stream-update">
+        <a href="#"><span class="new-posts"></span> {% trans 'new posts' %}</a>
       </div>
       {% include 'feed/partial/stream.html' %}
     </div>
