@@ -13,10 +13,27 @@ $(function () {
   });
 
   $(".btn-post").click(function () {
-    //$("#compose-form textarea").prop("readonly", true);
-    //$(".btn-post").prop("disabled", true);
-    $(".btn-post .text").text("Posting…");
-    $(".btn-post .fa").removeClass("fa-check").addClass("fa-spinner fa-spin");
+    $.ajax({
+      url: '/feed/post/',
+      data: $("#compose-form").serialize(),
+      type: 'post',
+      cache: false,
+      beforeSend: function () {
+        $("#compose-form textarea").prop("readonly", true);
+        $("#compose-form .btn-post, #compose-form .btn-cancel").prop("disabled", true);
+        $(".btn-post > span").hide();
+        $(".btn-post .btn-state-posting").show();
+      },
+      success: function (data) {
+
+      },
+      complete: function () {
+        $("#compose-form textarea").prop("readonly", false);
+        $("#compose-form .btn-post, #compose-form .btn-cancel").prop("disabled", false);
+        $(".btn-post > span").hide();
+        $(".btn-post .btn-state-post").show();
+      }
+    });
   });
 
 });

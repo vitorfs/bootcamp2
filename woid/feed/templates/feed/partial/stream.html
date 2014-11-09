@@ -1,5 +1,5 @@
 <ol class="stream">
-  {% for i in '1234567890' %}
-    {% include 'feed/partial/feed.html' %}
+  {% for feed in stream %}
+    {% include 'feed/partial/feed.html' with feed=feed %}
   {% endfor %}
 </ol>
