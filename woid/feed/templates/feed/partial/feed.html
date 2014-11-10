@@ -19,7 +19,16 @@
 				<a href="#"><span class="fa fa-thumbs-o-up"></span> Like <span class="like-count">({{ feed.likes }})</span></a>
 				<a href="#"><span class="fa fa-comment"></span> Comment <span class="comment-count">({{ feed.comments }})</span></a>
 			</div>
-			<div class="comments"></div>
+		</div>
+	</div>
+	<div class="comments">
+		<div class="write-comment">
+			<div class="comment-portrait">
+				<img src="{{ user.account.get_picture }}">
+			</div>
+			<div class="comment-field">
+				<input type="text" placeholder="Write a comment…">
+			</div>
 		</div>
 	</div>
 </li>
