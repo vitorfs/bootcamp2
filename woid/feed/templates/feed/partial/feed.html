@@ -2,25 +2,30 @@
 
 <li>
 	<div class="feed">
-		<a href="" class="feed-settings">
-			<span class="fa fa-caret-down"></span>
-		</a>
-		<h3>
-			<img src="https://avatars1.githubusercontent.com/u/1429529?v=2&s=460">
-			<a href="#">{{ feed.user.username }}</a>
-			<span>{{ feed.date|naturaltime }}</span>
-		</h3>
-		<p>{{ feed.linkfy_post|safe }}</p>
-		<div class="interaction">
-			<a href="#">
-				<span class="fa fa-thumbs-o-up"></span>
-				Like <span class="like-count">({{ feed.likes }})</span>
-			</a>
-			<a href="#">
-				<span class="fa fa-comment"></span>
-				Comment <span class="comment-count">({{ feed.comments }})</span>
-			</a>
+		<div class="feed-portrait">
+			<img src="{{ feed.user.account.get_picture }}">
 		</div>
-		<div class="comments"></div>
+		<div class="feed-content">
+			<a href="" class="feed-settings">
+				<span class="fa fa-caret-down"></span>
+			</a>
+			<h3>
+				<a href="#">{{ feed.user.account.get_screen_name }}</a>
+				<span class="separator">&bullet;</span>
+				<span>{{ feed.date|naturaltime }}</span>
+			</h3>
+			<p>{{ feed.linkfy_post|safe }}</p>
+			<div class="interaction">
+				<a href="#">
+					<span class="fa fa-thumbs-o-up"></span>
+					Like <span class="like-count">({{ feed.likes }})</span>
+				</a>
+				<a href="#">
+					<span class="fa fa-comment"></span>
+					Comment <span class="comment-count">({{ feed.comments }})</span>
+				</a>
+			</div>
+			<div class="comments"></div>
+		</div>
 	</div>
 </li>

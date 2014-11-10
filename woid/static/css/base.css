@@ -23,6 +23,10 @@ p {
   font-size: 1.4em;
 }
 
+a {
+  color: #428bca;
+}
+
 .wrapper {
   width: 960px;
   margin: 0 auto;
@@ -123,7 +127,7 @@ main {
 }
 
 .profile .fullname {
-  padding-top: 20px;
+  padding-top: 24px;
   padding-bottom: 3px;
 }
 
@@ -148,8 +152,8 @@ main {
   background-color: #fff;
   float: left;
   margin-bottom: 20px;
-  box-shadow: 0 0 5px #ccc;
-  border-radius: 5px;
+  box-shadow: 0 0 2px #ccc;
+  border-radius: 4px;
 }
 
 .content .content-header {
@@ -199,7 +203,7 @@ button:hover {
 }
 
 .content .content-body .content-inner {
-  padding: 20px;
+  padding: 15px 20px;
 }
 
 @media only screen and (max-width: 960px) {

@@ -27,41 +27,53 @@
   background-color: #f9f9f9;
 }
 
-.stream .feed {
-  padding: 20px 20px;
-}
-
-.stream .feed h3 img {
-  width: 25px;
-  border-radius: 50px;
+.stream .feed .feed-portrait {
+  width: 40px;
   float: left;
 }
 
+.stream .feed .feed-portrait img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.stream .feed .feed-content {
+  margin-left: 60px;
+}
+
+.stream .feed {
+  padding: 15px 20px;
+}
+
 .stream .feed h3 {
-  height: 25px;
   font-size: 1.4em;
   vertical-align: middle;
-  font-weight: 400;
 }
 
 .stream .feed h3 a {
   text-decoration: none;
   color: #555;
-  line-height: 25px;
-  margin-left: 10px;
-  float: left;
+  font-weight: 600;
+  vertical-align: middle;
 }
 
 .stream .feed h3 span {
   color: #bbb;
   font-size: .8em;
-  margin-left: 10px;
-  float: left;
-  line-height: 25px;
+  vertical-align: middle;
+}
+
+.stream .feed h3 span.separator {
+  font-size: 8px;
+  margin-left: 5px;
+  margin-right: 5px;
+  vertical-align: middle;
 }
 
 .stream .feed p {
   margin: 10px 0;
+  font-weight: 300;
+  font-size: 1.6em;
 }
 
 .stream .feed .interaction a {
@@ -99,4 +111,8 @@
   padding-bottom: 15px;
   font-size: 14px;
   text-align: center;
+}
+
+.feed-settings {
+  color: #bbb;
 }
