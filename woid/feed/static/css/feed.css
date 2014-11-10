@@ -57,6 +57,11 @@
   vertical-align: middle;
 }
 
+.stream .feed h3 a:hover {
+  color: #428bca;
+  text-decoration: underline;
+}
+
 .stream .feed h3 span {
   color: #bbb;
   font-size: .8em;
@@ -73,7 +78,7 @@
 .stream .feed p {
   margin: 10px 0;
   font-weight: 300;
-  font-size: 1.6em;
+  font-size: 1.4em;
 }
 
 .stream .feed .interaction a {
@@ -84,6 +89,7 @@
 }
 
 .stream .feed .interaction a:hover {
+  color: #428bca;
   border-bottom: 1px solid;
 }
 
