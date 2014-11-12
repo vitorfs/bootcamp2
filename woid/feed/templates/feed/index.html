@@ -7,7 +7,9 @@
 {% endblock stylesheets %}
 
 {% block scripts %}
+  <script src="{{ STATIC_URL }}js/jquery.bullseye-1.0-min.js"></script>
   <script src="{{ STATIC_URL }}js/feed.js"></script>
+  <script src="{{ STATIC_URL }}js/stream.js"></script>
 {% endblock scripts %}
 
 {% block context_menu %}
@@ -15,15 +17,14 @@
 {% endblock context_menu %}
 
 {% block content %}
+  {% csrf_token %}
   <div class="content">
     <div class="content-header">
-      <h2>
-        Feed
-        <button type="button" class="btn-compose">
-          <span class="fa fa-send"></span>
-          {% trans 'Compose' %}
-        </button>
-      </h2>
+      <button type="button" class="btn-compose">
+        <span class="fa fa-send"></span>
+        {% trans 'Compose' %}
+      </button>
+      <h2>Feed</h2>
     </div>
     <div class="content-body">
       <div class="compose content-inner">
@@ -46,9 +47,13 @@
         </form>
       </div>
       <div class="stream-update">
-        <a href="#"><span class="new-posts"></span> {% trans 'new posts' %}</a>
+        <a href="#"><span class="new-posts">5</span> {% trans 'new posts' %}</a>
       </div>
       {% include 'feed/partial/stream.html' with stream=stream %}
+      <div class="stream-loading">
+        <img src="{{ STATIC_URL }}img/loading.gif">
+      </div>
+      <div class="stream-trigger"></div>
     </div>
   </div>
 {% endblock content %}

@@ -44,15 +44,15 @@ class Feed(models.Model):
         return self.post
 
     @staticmethod
-    def get_feeds(organization, group=None, from_feed=None):
-        feeds = Feed.objects.filter(parent=None, organization=organization, group=group)
+    def get_feeds(organization, from_feed=None, group=None):
+        feeds = Feed.objects.filter(parent=None, organization=organization, group__name=group)
         if from_feed is not None:
             feeds = feeds.filter(id__lte=from_feed)
         return feeds
 
     @staticmethod
-    def get_feeds_after(feed, organization, group=None):
-        feeds = Feed.objects.filter(parent=None, id__gt=feed, organization=organization, group=group)
+    def get_feeds_after(organization, after_feed, group=None):
+        feeds = Feed.objects.filter(parent=None, id__gt=after_feed, organization=organization, group__name=group)
         return feeds
 
     def get_comments(self):

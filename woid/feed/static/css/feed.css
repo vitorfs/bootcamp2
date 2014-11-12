@@ -22,96 +22,106 @@
   border-bottom: none;
 }
 
-.stream li:hover {
-  cursor: pointer;
-  background-color: #f9f9f9;
+.post {
+  padding: 15px 20px;
 }
 
-.stream .feed .feed-portrait {
+.post:hover {
+  cursor: pointer;
+  background-color: #f9f9f9;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.feed .feed-portrait {
   width: 50px;
   float: left;
 }
 
-.stream .feed .feed-portrait img {
+.feed .feed-portrait img {
   width: 100%;
   border-radius: 30px;
 }
 
-.stream .feed .feed-content {
+.feed .feed-content {
   margin-left: 60px;
 }
 
-.stream .feed {
-  padding: 15px 20px;
-}
-
-.stream .feed h3 {
+.feed h3 {
   font-size: 1.4em;
   vertical-align: middle;
   margin-bottom: 0;
 }
 
-.stream .feed h3 a {
+.feed h3 a {
   text-decoration: none;
   color: #555;
   font-weight: 600;
   vertical-align: middle;
 }
 
-.stream .feed h3 a:hover {
-  color: #428bca;
+.feed h3 a:hover {
+  color: #4285f4;
   text-decoration: underline;
 }
 
-.stream .feed h3 span {
+.feed h3 span {
   color: #bbb;
   font-size: .8em;
   vertical-align: middle;
 }
 
-.stream .feed h3 span.separator {
+.feed h3 span.separator {
   font-size: 8px;
   margin-left: 5px;
   margin-right: 5px;
   vertical-align: middle;
 }
 
-.stream .feed p {
+.feed p {
   margin: 5px 0 15px;
   font-weight: 300;
   font-size: 1.4em;
 }
 
-.stream .feed .interaction a {
+.feed .interaction a {
   text-decoration: none;
   font-size: 1.2em;
   margin-right: .7em;
   color: #555;
 }
 
-.stream .feed .interaction a:hover {
-  color: #428bca;
+.feed .interaction a:hover {
+  color: #4285f4;
   border-bottom: 1px solid;
 }
 
-.stream .feed .interaction a span {
+.feed .interaction a span {
   margin-right: .1em;
 }
 
-.stream .feed .feed-settings {
+.feed .feed-settings {
   float: right;
   font-size: 1.2em;
+  color: #bbb;
+  padding: 5px;
+  margin-right: -5px;
+  margin-top: -5px;
+}
+
+.feed .feed-settings:hover {
+  color: #888;
 }
 
 .stream-update {
   border-top: 1px solid #fefefe;
   border-bottom: 1px solid #e9e9e9;
-  background-color: #f9f9f9;
   display: none;
 }
 
 .stream-update a {
   color: #888;
+  background-color: #f9f9f9;
   text-decoration: none;
   display: block;
   padding-top: 15px;
@@ -120,17 +130,57 @@
   text-align: center;
 }
 
-.feed-settings {
-  color: #bbb;
+.stream-update a:hover {
+  background-color: #f4f4f4;
+}
+
+.stream-loading {
+  color: #888;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e9e9e9;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  text-align: center;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  display: none;
 }
 
 .comments {
   display: none;
+  max-height: 300px;
+  overflow: scroll;
+  position: relative;
+}
+
+.comments:before,
+.comments:after {
+  content: "";
+  height: 10px;
+  left: 0;
+  right: 0; 
+}
+
+.comments:before {
+  background: -webkit-gradient(to bottom, red 0, rgba(255, 0, 0, 0) 100%);
+  background: -o-linear-gradient(to bottom, red 0, rgba(255, 0, 0, 0) 100%);
+  background: -moz-linear-gradient(to bottom, red 0, rgba(255, 0, 0, 0) 100%);
+  background: linear-gradient(to bottom, red 0, rgba(255, 0, 0, 0) 100%);
+  top: 0; 
+}
+
+.comments:after {
+  background: -webkit-gradient(to bottom, red 0, rgba(255, 0, 0, 0) 100%);
+  background: -o-linear-gradient(to bottom, red 0, rgba(255, 0, 0, 0) 100%);
+  background: -moz-linear-gradient(to bottom, red 0, rgba(255, 0, 0, 0) 100%);
+  background: linear-gradient(to bottom, red 0, rgba(255, 0, 0, 0) 100%);
+  bottom: 0; 
 }
 
 .write-comment {
   border-top: 1px solid #e9e9e9;
-  background-color: #f9f9f9;
+  background-color: #f4f4f4;
   padding: 10px 20px;
 }
 
@@ -155,4 +205,53 @@
   height: 30px;
   line-height: 1.5;
   padding: 5px 10px;
+}
+
+.comments .comment {
+  background-color: #f4f4f4;
+  padding: 10px 20px;
+  font-size: .9em;
+}
+
+.comments ol li {
+  border: none;
+}
+
+.comments .comment .interaction > a {
+  margin-right: 0;
+}
+
+.comments .comment .interaction > span {
+  color: #bbb;
+  font-size: 11px;
+}
+
+.comments .comment .interaction > span.separator {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.comments .feed p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.comments .feed p a.comment-user {
+  font-weight: 600;
+  color: #555;
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+.comments .feed p a.comment-user:hover {
+  color: #4285f4;
+  text-decoration: underline;
+}
+
+.comments .feed .feed-portrait {
+  text-align: right;
+}
+
+.comments .feed .feed-portrait img {
+  width: 30px;
 }
