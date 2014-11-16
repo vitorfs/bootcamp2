@@ -5,13 +5,16 @@ from django.shortcuts import render
 from woid.core.models import Organization
 from woid.core.forms import OrganizationForm
 
-@login_required
-def login_redirect(request):
-    organization_name = request.user.account.organization.name
-    return HttpResponseRedirect(reverse('home', args=(organization_name,)))
+def home(request):
+    user = request.user
+    if user.is_authenticated():
+        organization_name = user.account.organization.name
+        return HttpResponseRedirect(reverse('organization', args=(organization_name,)))
+    else:
+        return render(request, 'core/cover.html')
 
 @login_required
-def home(request, organization_name):
+def organization(request, organization_name):
 	return render(request, 'core/index.html')
 
 @login_required

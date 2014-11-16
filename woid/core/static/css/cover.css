@@ -1,0 +1,112 @@
+@import url(http://fonts.googleapis.com/css?family=Khand:600);
+
+* { 
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:before, :after { 
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f6f6f6;
+}
+
+header {
+  padding-top: 20px;
+}
+
+header ul li {
+  margin-right: 30px;
+  display: inline;
+  line-height: 1.9;
+  text-transform: uppercase;
+}
+
+header ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 0;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.cover {
+  width: 100%;
+  background: linear-gradient(45deg, #020031 0%, #6d3353 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+  color: #fff;
+  font-weight: 200;
+}
+
+main {
+  text-align: center;
+  padding: 90px 0 140px;
+}
+
+main h1 {
+  font-family: 'Khand', cursive;
+  font-size: 150px;
+  text-transform: lowercase;
+}
+
+main p {
+  font-size: 40px;
+}
+
+.wrapper {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.button {
+  color: #fff;
+  border: 0 none rgba(0, 0, 0, 0);
+  border-radius: 2px;
+  font-family: inherit;
+  font-weight: 400;
+  padding: 0.7em 1em;
+  text-decoration: none;
+  -moz-user-select: none;
+  cursor: pointer;
+  display: inline-block;
+  line-height: normal;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.button-primary:hover,
+.button-primary:focus {
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0,0,0, 0.05)), to(rgba(0,0,0, 0.10)));
+    background-image: -webkit-linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
+    background-image: -moz-linear-gradient(top, rgba(0,0,0, 0.05) 0%, rgba(0,0,0, 0.10));
+    background-image: -o-linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
+    background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
+}
+.button:focus {
+    outline: 0;
+}
+.button:active {
+    box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
+}
+
+.button-primary {
+  background-color: #0078e7;
+}

@@ -1,0 +1,20 @@
+{% load i18n %}
+
+<div class="compose content-inner">
+  <h3>{% trans 'Compose a new post' %}</h3>
+  <form id="compose-form">
+    <textarea rows="3" name="post" id="post"></textarea>
+    <button type="button" class="btn-post">
+      <span class="btn-state-post">
+        <span class="fa fa-check"></span>
+        <span class="text">{% trans 'Post' %}</span>
+      </span>
+      <span class="btn-state-posting" style="display: none">
+        <span class="fa fa-spinner fa-spin"></span>
+        <span class="text">{% trans 'Posting…' %}</span>
+      </span>
+    </button>
+    <button type="button" class="btn-cancel">{% trans 'Cancel' %}</button>
+    <span class="post-length">255</span>
+  </form>
+</div>

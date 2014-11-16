@@ -9,7 +9,7 @@
 {% block scripts %}
   <script src="{{ STATIC_URL }}js/jquery.bullseye-1.0-min.js"></script>
   <script src="{{ STATIC_URL }}js/feed.js"></script>
-  <script src="{{ STATIC_URL }}js/stream.js"></script>
+  <script src="{{ STATIC_URL }}js/compose.js"></script>
 {% endblock scripts %}
 
 {% block context_menu %}
@@ -27,27 +27,9 @@
       <h2>Feed</h2>
     </div>
     <div class="content-body">
-      <div class="compose content-inner">
-        <h3>{% trans 'Compose a new post' %}</h3>
-        <form id="compose-form">
-          {% csrf_token %}
-          <textarea rows="3" name="post" id="post"></textarea>
-          <button type="button" class="btn-post">
-            <span class="btn-state-post">
-              <span class="fa fa-check"></span>
-              <span class="text">{% trans 'Post' %}</span>
-            </span>
-            <span class="btn-state-posting" style="display: none">
-              <span class="fa fa-spinner fa-spin"></span>
-              <span class="text">{% trans 'Posting…' %}</span>
-            </span>
-          </button>
-          <button type="button" class="btn-cancel">{% trans 'Cancel' %}</button>
-          <span class="post-length">255</span>
-        </form>
-      </div>
+      {% include 'feed/partial/compose.html' %}
       <div class="stream-update">
-        <a href="#"><span class="new-posts">5</span> {% trans 'new posts' %}</a>
+        <a href="#"><span class="new-posts"></span> {% trans 'new posts' %}</a>
       </div>
       {% include 'feed/partial/stream.html' with stream=stream %}
       <div class="stream-loading">

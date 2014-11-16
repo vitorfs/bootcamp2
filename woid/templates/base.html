@@ -16,7 +16,7 @@
           <span class="fa fa-bars"></span>
         </a>
         <h1>
-          <a href="{% url 'home' user.account.organization.name %}">Woid</a>
+          <a href="{% url 'home' %}">Woid</a>
         </h1>
         <ul>
           <li>
@@ -76,7 +76,7 @@
         <div class="context-menu">
           <h2>HQSPlus Network</h2>
           <ul>
-            <li><a href="{% url 'home' user.account.organization.name %}"><span class="fa fa-home"></span> Home</a></li>
+            <li><a href="{% url 'organization' user.account.organization.name %}"><span class="fa fa-home"></span> Home</a></li>
             <li><a href=""><span class="fa fa-inbox"></span> Inbox</a></li>
             <li><a href=""><span class="fa fa-bell"></span> Notifications</a></li>
             <li><a href="{% url 'manage' user.account.organization.name %}"><span class="fa fa-cogs"></span> Manage Network</a></li>
@@ -89,6 +89,7 @@
       {% endblock content %}
     </main>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}js/woid.js"></script>
     {% block scripts %}
     {% endblock scripts %}
   </body>

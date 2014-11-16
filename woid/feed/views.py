@@ -7,6 +7,12 @@ from woid.feed.models import Feed
 
 FEEDS_PER_PAGE = 20
 
+def _stream(feeds, user):
+    html = []
+    for feed in feeds:
+        html.append(render_to_string('feed/partial/feed.html', { 'feed' : feed, 'user': user }))
+    return u'\n'.join(html)
+
 @login_required
 def feed(request, organization_name):
     organization = request.user.account.organization
@@ -19,30 +25,43 @@ def feed(request, organization_name):
 def load(request):
     from_feed = request.GET.get('from_feed')
     page = request.GET.get('page')
+    user = request.user
     organization = request.user.account.organization
     feeds = Feed.get_feeds(organization, from_feed)
 
     paginator = Paginator(feeds, FEEDS_PER_PAGE)
     try:
-        stream = paginator.page(page)
+        paginated_feeds = paginator.page(page)
     except PageNotAnInteger:
-        stream = paginator.page(1)
+        paginated_feeds = paginator.page(1)
     except EmptyPage:
         return HttpResponse(u'')
-
-    html = []
-
-    for feed in stream:
-        html.append(render_to_string('feed/partial/feed.html', { 'feed' : feed }))
-    response = u'\n'.join(html)
     
-    return HttpResponse(response)
+    return HttpResponse(_stream(paginated_feeds, user))
+
+@login_required
+def load_new(request):
+    user = request.user
+    organization = request.user.account.organization
+    last_feed = request.POST.get('last_feed')
+    feeds = Feed.get_feeds_after(organization, last_feed)
+    return HttpResponse(_stream(feeds, user))
 
 @login_required
 def post(request):
-    feed = Feed()
-    feed.user = request.user
-    feed.organization = request.user.account.organization
-    feed.post = request.POST['post'].strip()
+    organization = request.user.account.organization
+    post = request.POST['post'].strip()
+    user = request.user
+
+    feed = Feed(organization=organization, post=post, user=user)
     feed.save()
-    return HttpResponse()
+
+    return load_new(request)
+
+@login_required
+def check(request):
+    organization = request.user.account.organization
+    last_feed = request.GET.get('last_feed')
+    feeds = Feed.get_feeds_after(organization, last_feed)
+    count = feeds.count()
+    return HttpResponse(count)

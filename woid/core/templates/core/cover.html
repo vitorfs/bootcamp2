@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Woid</title>
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/reset.css">
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/cover.css">
+</head>
+<body>
+  <div class="cover">
+    <div class="wrapper">
+      <header>
+        <a href="" class="button button-primary pull-right">Sign up</a>
+        <a href="{% url 'login' %}" class="button pull-right">Log in</a>
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="">Features</a></li>
+          <li><a href="">Pricing</a></li>
+        </ul>
+      </header>
+      <main>
+        <h1>Woid</h1>
+        <p>Enterprise Developer Network</p>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
