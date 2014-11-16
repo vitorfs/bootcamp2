@@ -37,6 +37,17 @@ header ul li a {
   font-weight: 400;
 }
 
+.cover:after {
+  background: url("../img/stardust.png") repeat scroll center center rgba(0, 0, 0, 0);
+  bottom: 0;
+  content: "";
+  display: block;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .cover {
   width: 100%;
   background: linear-gradient(45deg, #020031 0%, #6d3353 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -44,24 +55,26 @@ header ul li a {
   font-weight: 200;
 }
 
-main {
+.container {
   text-align: center;
-  padding: 90px 0 140px;
+  padding: 100px 0 150px;
 }
 
-main h1 {
+h1 {
   font-family: 'Khand', cursive;
   font-size: 150px;
-  text-transform: lowercase;
+  text-transform: lowercase;;
 }
 
-main p {
+.container p {
   font-size: 40px;
 }
 
 .wrapper {
   width: 960px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .pull-right {
@@ -109,4 +122,27 @@ main p {
 
 .button-primary {
   background-color: #0078e7;
+}
+
+main {
+  background-color: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+section {
+  text-align: center;
+  font-weight: 300;
+  padding: 60px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+section h2+p {
+  color: #555;
+  font-size: 24px;
 }
