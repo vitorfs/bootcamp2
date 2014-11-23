@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from woid.feed.models import Feed
+from woid.activities.models import Activity, Notification
+import json
 
 FEEDS_PER_PAGE = 20
 
@@ -50,13 +52,29 @@ def load_new(request):
 @login_required
 def post(request):
     organization = request.user.account.organization
-    post = request.POST['post'].strip()
+    post = request.POST.get('post').strip()
     user = request.user
-
     feed = Feed(organization=organization, post=post, user=user)
     feed.save()
-
     return load_new(request)
+
+@login_required
+def like(request):
+    feed_id = request.POST.get('feed_id')
+    feed = Feed.objects.get(pk=feed_id)
+    user = request.user
+    like = Activity.objects.filter(activity_type=Activity.LIKE, feed=feed_id, user=user)
+
+    if like:
+        Notification.unotify_liked(user, feed)
+        like.delete()
+    else:
+        like = Activity(activity_type=Activity.LIKE, feed=feed_id, user=user)
+        like.save()
+        Notification.notify_liked(user, feed)
+
+    data = json.dumps({ 'feed_likes': feed.calculate_likes() })
+    return HttpResponse(data, content_type='application/json')
 
 @login_required
 def check(request):

@@ -18,7 +18,7 @@
 
 {% block content %}
   {% csrf_token %}
-  <div class="content">
+  <div class="content content-sm">
     <div class="content-header">
       <button type="button" class="btn-compose">
         <span class="fa fa-send"></span>
@@ -37,5 +37,7 @@
       </div>
       <div class="stream-trigger"></div>
     </div>
+  </div>
+  <div class="right-menu">
   </div>
 {% endblock content %}

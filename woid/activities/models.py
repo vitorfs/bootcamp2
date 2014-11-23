@@ -122,3 +122,15 @@ class Notification(models.Model):
             return u'{0}...'.format(value[:summary_size])
         else:
             return value
+
+    @staticmethod
+    def notify_liked(user, feed):
+        if user != feed.user:
+            notification = Notification(notification_type=Notification.LIKED, from_user=user, to_user=feed.user, feed=feed)
+            notification.save()
+
+    @staticmethod
+    def unotify_liked(user, feed):
+        if user != feed.user:
+            notification = Notification.objects.filter(notification_type=Notification.LIKED, from_user=user, to_user=feed.user, feed=feed)
+            notification.delete()

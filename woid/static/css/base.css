@@ -96,15 +96,23 @@ header ul li a:active {
 
 main {
   width: 960px;
-  margin: 60px auto 20px;
+  margin: 50px auto 20px;
   min-height: 400px;
 }
 
 .left-menu {
-  width: 230px;
   float: left;
+  width: 240px;
+  padding-right: 20px;
   position: fixed;
-  padding-right: 10px;
+}
+
+.right-menu {
+  float: left;
+  width: 240px;
+  padding-left: 20px;
+  position: fixed;
+  margin-left: 720px;
 }
 
 .profile {
@@ -156,6 +164,15 @@ main {
   margin-bottom: 20px;
   box-shadow: 0 0 2px #ccc;
   border-radius: 4px;
+}
+
+.content-sm {
+  width: 480px;
+}
+
+.content-lg {
+  width: 960px;
+  margin: 0;
 }
 
 .content .content-header {
@@ -311,4 +328,32 @@ h3 {
   font-size: 18px;
   margin-bottom: 10px;
   font-weight: 300;
+}
+
+.hide {
+  display: none;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
 }

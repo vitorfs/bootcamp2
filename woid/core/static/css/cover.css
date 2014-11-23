@@ -77,6 +77,13 @@ h1 {
   z-index: 2;
 }
 
+@media only screen and (max-width: 960px) {
+  .wrapper {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
 .pull-right {
   float: right;
 }

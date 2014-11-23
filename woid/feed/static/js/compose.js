@@ -17,9 +17,16 @@ $(function () {
 
   $(".btn-post").click(function () {
     var post = $("#post").val();
+    if (post.trim().length === 0) {
+      return false;
+    }
+
     var csrf = $("[name='csrfmiddlewaretoken']").val();
     var last_feed = $(".stream li:first-child").attr("data-feed-id");
-    if (last_feed === undefined) last_feed = "0";
+    if (last_feed === undefined) {
+      last_feed = "0";
+    }
+
     $.ajax({
       url: '/feed/post/',
       data: {

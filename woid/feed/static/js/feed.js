@@ -86,17 +86,17 @@ $(function () {
         success: function (data) {
           if (parseInt(data) > 0) {
             $(".stream-update .new-posts").text(data);
-            $(".stream-update").show();
+            $(".stream-update").slideDown();
             $(document).attr("title", "(" + data + ") " + PAGE_TITLE);
           }
         },
         complete: function() {
-          window.setTimeout(check_new_feed, 3000);
+          window.setTimeout(check_new_feed, REQUEST_INTERVAL);
         }
       });
     }
     else {
-      window.setTimeout(check_new_feed, 3000);
+      window.setTimeout(check_new_feed, REQUEST_INTERVAL);
     }
   };
   check_new_feed();
@@ -136,6 +136,30 @@ $(function () {
   });
 
   $(".stream").on("click", ".feed-like", function (evt) {
+    var feed_id = $(this).closest("li.feed").attr("data-feed-id");
+    var csrf = $("[name='csrfmiddlewaretoken']").val();
+    var like_button = $(this);
+    $.ajax({
+      url: '/feed/like/',
+      data: {
+        'feed_id': feed_id,
+        'csrfmiddlewaretoken': csrf
+      },
+      dataType: 'json',
+      type: 'post',
+      cache: false,
+      success: function (data) {
+        if ($(".text-like", like_button).is(":visible")) {
+          $(".text-like", like_button).hide();
+          $(".text-unlike", like_button).show();
+        }
+        else {
+          $(".text-like", like_button).show();
+          $(".text-unlike", like_button).hide();
+        }
+        $(".like-count", like_button).text("(" + data.feed_likes + ")");
+      }
+    });
     evt.stopPropagation();
     return false;
   });

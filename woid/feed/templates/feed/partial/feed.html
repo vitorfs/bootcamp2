@@ -1,4 +1,6 @@
+{% load i18n %}
 {% load humanize %}
+
 <li class="feed" data-feed-id="{{ feed.id }}">
   <div class="post">
     <div class="feed-portrait">
@@ -15,7 +17,17 @@
       </h3>
       <p>{{ feed.linkfy_post|safe }}</p>
       <div class="interaction">
-        <a href="#" class="feed-like"><span class="fa fa-thumbs-o-up"></span> Like <span class="like-count">({{ feed.likes }})</span></a>
+        <a href="#" class="feed-like">
+          <span class="fa fa-thumbs-o-up"></span> 
+          {% if user in feed.get_likers %}
+            <span class="text-like" style="display: none">{% trans 'Like' %}</span>
+            <span class="text-unlike">{% trans 'Unlike' %}</span>
+          {% else %}
+            <span class="text-like">{% trans 'Like' %}</span>
+            <span class="text-unlike" style="display: none">{% trans 'Unlike' %}</span>
+          {% endif %}
+          <span class="like-count">({{ feed.likes }})</span>
+        </a>
         <a href="#" class="feed-comment"><span class="fa fa-comment"></span> Comment <span class="comment-count">({{ feed.comments }})</span></a>
       </div>
     </div>
