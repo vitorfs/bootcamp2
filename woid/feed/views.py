@@ -77,6 +77,12 @@ def like(request):
     return HttpResponse(data, content_type='application/json')
 
 @login_required
+def comments(request):
+    feed_id = request.GET.get('feed_id')
+    feed = Feed.objects.get(pk=feed_id)
+    return render(request, 'feed/partial/comments.html', { 'feed': feed })
+
+@login_required
 def check(request):
     organization = request.user.account.organization
     last_feed = request.GET.get('last_feed')

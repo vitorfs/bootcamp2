@@ -105,15 +105,33 @@ $(function () {
     callback = callback || function () {};
     var feed = $(this);
     if ($(feed).hasClass("tracking")) {
-      $(".comments", feed).slideUp(300, function () {
-        $(feed).removeClass("tracking");
-      })
+      $(feed).removeClass("tracking");
+      $(".comments", feed).slideUp(300);
     }
     else {
-      $(".comments", feed).slideDown(300, function () {
-        $(feed).addClass("tracking");
-        callback();
-      })
+      $(feed).addClass("tracking");
+      var feed_id = $(feed).attr("data-feed-id");
+      $.ajax({
+        url: '/feed/comments/',
+        data: {
+          'feed_id': feed_id
+        },
+        cache: false,
+        beforeSend: function () {
+          $(".loading-comment", feed).css("display", "block");
+        },
+        success: function (data) {
+          $(".comments ol", feed).html(data);
+          $(".comment-count", feed).text($(".comments ol li", feed).not(".comment-help").length);
+        },
+        error: function () {
+
+        },
+        complete: function () {
+          $(".loading-comment", feed).css("display", "none");
+        }
+      });
+      $(".comments", feed).slideDown(300, callback);
     }
   };
 
@@ -157,7 +175,7 @@ $(function () {
           $(".text-like", like_button).show();
           $(".text-unlike", like_button).hide();
         }
-        $(".like-count", like_button).text("(" + data.feed_likes + ")");
+        $(".like-count", like_button).text(data.feed_likes);
       }
     });
     evt.stopPropagation();

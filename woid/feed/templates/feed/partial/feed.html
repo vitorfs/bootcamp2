@@ -7,7 +7,7 @@
       <img src="{{ feed.user.account.get_picture }}">
     </div>
     <div class="feed-content">
-      <a href="" class="feed-settings">
+      <a href="#" class="feed-settings">
         <span class="fa fa-chevron-down"></span>
       </a>
       <h3>
@@ -26,9 +26,13 @@
             <span class="text-like">{% trans 'Like' %}</span>
             <span class="text-unlike" style="display: none">{% trans 'Unlike' %}</span>
           {% endif %}
-          <span class="like-count">({{ feed.likes }})</span>
+          (<span class="like-count">{{ feed.likes }}</span>)
         </a>
-        <a href="#" class="feed-comment"><span class="fa fa-comment"></span> Comment <span class="comment-count">({{ feed.comments }})</span></a>
+        <a href="#" class="feed-comment">
+          <span class="fa fa-comment"></span>
+          {% trans 'Comment' %}
+          (<span class="comment-count">{{ feed.comments }}</span>)
+        </a>
       </div>
     </div>
   </div>
@@ -38,30 +42,11 @@
         <img src="{{ user.account.get_picture }}">
       </div>
       <div class="comment-field">
-        <input type="text" placeholder="Write a comment…" name="comment-description">
+        <input type="text" placeholder="{% trans 'Write a comment…' %}" name="comment-description">
       </div>
     </div>
+    <div class="comment-help loading-comment hide">{% trans 'Loading…' %}</div>
     <ol>
-      {% for i in '1234' %}
-      <li class="feed" data-feed-id="{{ feed.id }}">
-        <div class="comment">
-          <div class="feed-portrait">
-            <img src="{{ feed.user.account.get_picture }}">
-          </div>
-          <div class="feed-content">
-            <a href="" class="feed-settings">
-              <span class="fa fa-chevron-down"></span>
-            </a>
-            <p><a href="#" class="comment-user">{{ feed.user.account.get_screen_name }}</a> {{ feed.linkfy_post|safe }}</p>
-            <div class="interaction">
-              <a href="#"><span class="fa fa-thumbs-o-up"></span> Like <span class="like-count">({{ feed.likes }})</span></a>
-              <span class="separator">&bullet;</span>
-              <span>{{ feed.date|naturaltime }}</span>
-            </div>
-          </div>
-        </div>
-      </li>
-      {% endfor %}
     </ol>
   </div>
 </li>

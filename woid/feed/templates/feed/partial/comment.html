@@ -1,0 +1,28 @@
+{% load i18n %}
+{% load humanize %}
+
+<li class="feed" data-feed-id="{{ comment.id }}">
+  <div class="comment">
+    <div class="feed-portrait">
+      <img src="{{ comment.user.account.get_picture }}">
+    </div>
+    <div class="feed-content">
+      <a href="#" class="feed-settings">
+        <span class="fa fa-chevron-down"></span>
+      </a>
+      <p>
+        <a href="#" class="comment-user">{{ comment.user.account.get_screen_name }}</a> 
+        {{ comment.linkfy_post|safe }}
+      </p>
+      <div class="interaction">
+        <a href="#">
+          <span class="fa fa-thumbs-o-up"></span> 
+          {% trans 'Like' %}
+          (<span class="like-count">{{ comment.likes }}</span>)
+        </a>
+        <span class="separator">&bullet;</span>
+        <span>{{ comment.date|naturaltime }}</span>
+      </div>
+    </div>
+  </div>
+</li>

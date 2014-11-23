@@ -1,0 +1,7 @@
+{% load i18n %}
+
+{% for comment in feed.get_comments %}
+  {% include 'feed/partial/comment.html' with comment=comment %}
+{% empty %}
+  <li class="comment-help">Be the first one to comment</li>
+{% endfor %}
