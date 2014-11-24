@@ -134,3 +134,21 @@ class Notification(models.Model):
         if user != feed.user:
             notification = Notification.objects.filter(notification_type=Notification.LIKED, from_user=user, to_user=feed.user, feed=feed)
             notification.delete()
+
+    @staticmethod
+    def notify_commented(user, feed):
+        if user != feed.user:
+            notification = Notification(notification_type=Notification.COMMENTED, from_user=user, to_user=feed.user, feed=feed)
+            notification.save()
+
+    @staticmethod
+    def notify_also_commented(user, feed):
+        comments = feed.get_comments()
+        users = []
+        for comment in comments:
+            if comment.user != user and comment.user != feed.user:
+                users.append(comment.user.pk)
+        users = list(set(users))
+        for user in users:
+            notification = Notification(notification_type=Notification.ALSO_COMMENTED, from_user=user, to_user=User(id=user), feed=feed)
+            notification.save()

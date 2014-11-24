@@ -150,10 +150,18 @@ $(function () {
 
   $(".stream").on("click", ".feed-settings", function (evt) {
     evt.stopPropagation();
-    return false;    
+    if ($(".dropdown-menu", this).is(":visible")) {
+      $(".dropdown-menu", this).fadeOut(200);
+    }
+    else {
+      $(".dropdown-menu").hide();
+      $(".dropdown-menu", this).fadeIn(200);
+    }
+    return false;
   });
 
   $(".stream").on("click", ".feed-like", function (evt) {
+    evt.stopPropagation();
     var feed_id = $(this).closest("li.feed").attr("data-feed-id");
     var csrf = $("[name='csrfmiddlewaretoken']").val();
     var like_button = $(this);
@@ -178,7 +186,6 @@ $(function () {
         $(".like-count", like_button).text(data.feed_likes);
       }
     });
-    evt.stopPropagation();
     return false;
   });
 
@@ -190,5 +197,86 @@ $(function () {
     evt.stopPropagation();
     return false;
   });
+
+  $(".stream").on("keydown", ".comments input[name='comment-description']", function (evt) {
+    var keyCode = evt.which?evt.which:evt.keyCode;
+    if (keyCode == 13) {
+      var feed = $(this).closest(".feed");
+      var comments = $(this).closest(".comments");
+      var input = $(this);
+      var comment = $(this).val();
+      var feed_id = $(this).closest("li.feed").attr("data-feed-id");
+      var csrf = $("[name='csrfmiddlewaretoken']").val();
+
+      $.ajax({
+        url: '/feed/comment/',
+        data: {
+          'feed_id': feed_id,
+          'comment': comment,
+          'csrfmiddlewaretoken': csrf,
+        },
+        type: 'post',
+        cache: false,
+        beforeSend: function () {
+          $(input).val("");
+        },
+        success: function (data) {
+          $("ol", comments).html(data);
+          $(".comment-count", feed).text($(".comments ol li", feed).not(".comment-help").length);
+        }
+      });
+      return false;
+    }
+  });
+
+  function update_feeds () {
+    var first_feed = $(".stream li:first-child").attr("data-feed-id");
+    var last_feed = $(".stream li:last-child").attr("data-feed-id");
+
+    if (first_feed != undefined && last_feed != undefined) {
+      $.ajax({
+        url: '/feed/update/',
+        data: {
+          'first_feed': first_feed,
+          'last_feed': last_feed
+        },
+        cache: false,
+        success: function (data) {
+          $.each(data, function(id, feed) {
+              var li = $("li[data-feed-id='" + id + "']");
+              $(".like-count", li).text(feed.likes);
+              $(".comment-count", li).text(feed.comments);
+          });
+        },
+        complete: function () {
+          window.setTimeout(update_feeds, REQUEST_INTERVAL);
+        }
+      });
+    }
+    else {
+      window.setTimeout(update_feeds, REQUEST_INTERVAL);
+    }
+  };
+  update_feeds();
+
+  function track_comments () {
+    $(".tracking").each(function () {
+      var feed = $(this);
+      var feed_id = $(this).closest("li").attr("data-feed-id");
+      $.ajax({
+        url: '/feed/track_comments/',
+        data: {
+          'feed_id': feed_id
+        },
+        cache: false,
+        success: function (data) {
+          $(".comments ol", feed).html(data);
+          $(".comment-count", feed).text($(".comments ol li", feed).not(".comment-help").length);
+        }
+      });
+    });
+    window.setTimeout(track_comments, REQUEST_INTERVAL);
+  };
+  track_comments();
 
 });

@@ -4,4 +4,4 @@ if (navigator.appVersion.indexOf("Mac")!=-1) OPERATING_SYSTEM="MacOS";
 if (navigator.appVersion.indexOf("X11")!=-1) OPERATING_SYSTEM="UNIX";
 if (navigator.appVersion.indexOf("Linux")!=-1) OPERATING_SYSTEM="Linux";
 var PAGE_TITLE = $(document).attr("title");
-var REQUEST_INTERVAL = 3000;
+var REQUEST_INTERVAL = 30000;

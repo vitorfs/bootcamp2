@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -50,6 +51,7 @@ def load_new(request):
     return HttpResponse(_stream(feeds, user))
 
 @login_required
+@require_POST
 def post(request):
     organization = request.user.account.organization
     post = request.POST.get('post').strip()
@@ -59,6 +61,7 @@ def post(request):
     return load_new(request)
 
 @login_required
+@require_POST
 def like(request):
     feed_id = request.POST.get('feed_id')
     feed = Feed.objects.get(pk=feed_id)
@@ -77,6 +80,18 @@ def like(request):
     return HttpResponse(data, content_type='application/json')
 
 @login_required
+@require_POST
+def comment(request):
+    feed_id = request.POST.get('feed_id')
+    feed = Feed.objects.get(pk=feed_id)
+    post = request.POST.get('comment')
+    user = request.user
+    feed.comment(user=user, post=post)
+    Notification.notify_commented(user, feed)
+    Notification.notify_also_commented(user, feed)
+    return render(request, 'feed/partial/comments.html', { 'feed': feed })
+
+@login_required
 def comments(request):
     feed_id = request.GET.get('feed_id')
     feed = Feed.objects.get(pk=feed_id)
@@ -89,3 +104,21 @@ def check(request):
     feeds = Feed.get_feeds_after(organization, last_feed)
     count = feeds.count()
     return HttpResponse(count)
+
+@login_required
+def update(request):
+    first_feed = request.GET.get('first_feed')
+    last_feed = request.GET.get('last_feed')
+    organization = request.user.account.organization
+    feeds = Feed.get_feeds(organization).filter(id__range=(last_feed, first_feed))
+    dump = {}
+    for feed in feeds:
+        dump[feed.pk] = {'likes': feed.likes, 'comments': feed.comments}
+    data = json.dumps(dump)
+    return HttpResponse(data, content_type='application/json')
+
+@login_required
+def track_comments(request):
+    feed_id = request.GET.get('feed_id')
+    feed = Feed.objects.get(pk=feed_id)
+    return render(request, 'feed/partial/comments.html', { 'feed': feed })
