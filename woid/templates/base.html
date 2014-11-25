@@ -89,6 +89,7 @@
       {% block content %}
       {% endblock content %}
     </main>
+    <input type="hidden" name="current_network" id="current_network" value="{{ request.session.current_network }}">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="{{ STATIC_URL }}js/woid.js"></script>
     {% block scripts %}
