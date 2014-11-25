@@ -150,13 +150,7 @@ $(function () {
 
   $(".stream").on("click", ".feed-settings", function (evt) {
     evt.stopPropagation();
-    if ($(".dropdown-menu", this).is(":visible")) {
-      $(".dropdown-menu", this).fadeOut(200);
-    }
-    else {
-      $(".dropdown-menu").hide();
-      $(".dropdown-menu", this).fadeIn(200);
-    }
+    $(this).toggleDropdown();
     return false;
   });
 

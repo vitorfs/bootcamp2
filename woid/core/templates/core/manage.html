@@ -20,9 +20,24 @@
           {% endfor %}
           {% for field in form.visible_fields %}
             <div class="field-wrapper">
-              {{ field.errors }}
+
+              {% if field.help_text %}
+                <span class="help-text">
+                  <i class="fa fa-question-circle"></i>
+                  <div class="dropdown-menu">
+                    {{ field.help_text|safe }}
+                  </div>
+                </span>
+              {% endif %}
+
               <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              
               {{ field }}
+
+              {% for error in field.errors %}
+                <label class="control-label">{{ error }}</label>
+              {% endfor %}
+
             </div>
           {% endfor %}
           <div class="field-wrapper">
@@ -30,13 +45,6 @@
           </div>
         </form>
       </div>
-    </div>
-  </div>
-  <div class="content">
-    <div class="content-header">
-      <h2>{% trans 'Invites' %}</h2>
-    </div>
-    <div class="content-body">
     </div>
   </div>
 {% endblock content %}

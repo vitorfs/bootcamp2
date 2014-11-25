@@ -27,6 +27,10 @@ a {
   color: #4285f4;
 }
 
+strong {
+  font-weight: 600;
+}
+
 .wrapper {
   width: 960px;
   margin: 0 auto;
@@ -356,4 +360,36 @@ h3 {
 
 .align-right {
   text-align: right;
+}
+
+.dropdown-menu {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  margin-left: -230px;
+  margin-top: 7px;
+  position: absolute;
+  width: 250px;
+  display: none;
+  padding: 0 10px;
+}
+
+.dropdown-menu p {
+  color: #555;
+  margin: 10px 0;
+}
+
+.help-text {
+  float: right;
+}
+
+.help-text i {
+  font-size: 1.6em;
+  color: #888;
+  cursor: pointer;
+}
+
+.help-text i:hover {
+  color: #555;
 }
