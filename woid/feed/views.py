@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from woid.feed.models import Feed
-from woid.activities.models import Activity, Notification
+from woid.activities.models import Activity
+from woid.notifications.models import Notification
 import json
 
 FEEDS_PER_PAGE = 20

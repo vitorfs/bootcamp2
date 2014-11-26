@@ -32,7 +32,7 @@ class Notification(models.Model):
     feed = models.ForeignKey('feed.Feed', null=True, blank=True)
     question = models.ForeignKey('questions.Question', null=True, blank=True)
     answer = models.ForeignKey('questions.Answer', null=True, blank=True)
-    notification_type = models.CharField(max_length=1, choices=NOTIFICATION_TYPES)
+    notification_type = models.CharField(max_length=30, choices=NOTIFICATION_TYPES)
     is_read = models.BooleanField(default=False)
 
     class Meta:

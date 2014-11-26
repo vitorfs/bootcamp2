@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
-from woid.activities.models import Notification
+from woid.notifications.models import Notification
 
 @login_required
 def notifications(request):
